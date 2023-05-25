@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 데이터 받기</title>
+</head>
+<body>
+    <h3>회원가입 데이터 받기</h3>
+    <form action="/02_servletdata/enrollMember.do" method="post">
+        <ul>
+            <li>아이디 : <input type="text" name="id"></li>
+            <li>패스워드 : <input type="password" name="pw"></li>
+            <li>이름 : <input type="text" name="name"></li>
+            <li>닉네임 : <input type="text" name="nickname"></li>
+            <li>이메일 : <input type="email" name="email"></li>
+            <li>취미 : 
+                <label for=""><input type="checkbox" name="hobby" value="운동">운동</label>
+                <label for=""><input type="checkbox" name="hobby" value="독서">독서</label>
+                <label for=""><input type="checkbox" name="hobby" value="게임">게임</label>
+                <label for=""><input type="checkbox" name="hobby" value="영화">영화</label>
+            </li>
+            <li>혼인여부 : 
+                <label for=""><input type="radio" name="married" value="기혼">기혼</label>
+                <label for=""><input type="radio" name="married" value="미혼">미혼</label>
+            </li>
+            <li>
+                <textarea name="info" cols="50" rows="10"></textarea>
+            </li>
+        </ul>
+        <input type="submit" value="제출">
+        <input type="reset" vlaue="취소">
+    </form>
+</body>
+</html>

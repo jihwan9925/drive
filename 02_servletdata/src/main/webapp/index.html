@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>서블릿 다루기</title>
+</head>
+<body>
+	<h2>서블릿객체 이용하기</h2>
+	<h4>클라이언트 요청 응답하기</h4>
+	<h5><a href="/02_servletdata/basicrequest.do">서블릿으로 기본요청 처리하기</a></h5>
+	<p>
+		<form action="/02_servletdata/basicrequest.do" method="post">
+			<input type="submit" value="전송">
+		</form>
+	</p>
+	
+	<h2>클라이언트가 보낸 데이터 처리하기</h2>
+	<p>
+		클라이언트가 보낸 데이터는 HttpServletRequest객체를 이용해서
+		서버에서 가져올 수 있다.
+	</p>
+	<h3>
+		<a href="/02_servletdata/basicdata.do?testdata=test">
+		querystring으로 보낸 데이터 확인
+		</a>
+		
+	</h3>
+	<form action="/02_servletdata/basicdata.do">
+		<input type="text" name="testdata">
+		<input type="submit" value="데이터전송">
+	</form>
+	
+	<h2>클라이언트가 보낸 데이터 처리하기2</h2>
+	<h3>
+		<a href="/02_servletdata/views/persontest.html">개인취향 테스트</a>
+	</h3>
+	
+	<h2>클라이언트가 보낸 데이터 처리하기3</h2>
+	<h3>
+		<a href="/02_servletdata/views/enrollMember.html">회원가입</a>
+	</h3>
+	
+	<h2>서블릿에서 다른 서블릿, 페이지를 요청하는 방법</h2>
+	<ul>
+		<li>RequestDispatcher객체를 이용해서 전환하기</li>
+		<li>HttpServletResponse객체의 sendResirect()메소드 이용하기</li>
+	</ul>
+	<h3><a href="/02_servletdata/views/persontest2.html">서버내에서 다른 서블릿 호출하기</a></h3>
+	<h3><a href="/02_servletdata/views/persontest3.html">서버내에서 다른 서블릿 재요청시키기</a></h3>
+	<h3><a href="/02_servletdata/views/board/insertBoard.html">게시글 등록</a></h3>
+	
+	<h2>서버에서 데이터를 저장하는 객체</h2>
+	<ul>
+		<li>HttpServletRequest : 1회용 데이터를 저장하는 저장소(요청하고 응답이 완룔될때까지 유지)</li>
+		<li>HttpSession : 원하는 시점에 생성해서 원하는 시점까지 저장할 수 있는 저장소</li>
+		<li>ServletContext : 서버가 실행되고 종료될때까지 유지하는 저장소</li>
+	</ul>
+	<p>
+		각 개체 데이터를 저장하는 방법 <br>
+		사용법 : 객체명.setAttribute("key",value:type=object); <br>
+		저장된 값 가져오기 <br>
+		사용법 : 객체명.getSttribute("key"); //반환형 object 형변환하여 사용 <br>
+		저장된 값 삭제하기 <br>
+		사용법 : 객체명.removeAttribute("key"); <br>
+	</p>
+	<h3><a href="/02_servletdata/sharedata.do">데이터 저장객체 활용하기</a> </h3>
+	<h3><a href="/02_servletdata/extraInfo.do">request객체에 추가정보 확인</a> </h3>		
+	
+	<h2>로그인 구현하기</h2>
+	<form action="/02_servletdata/loginend.do" method="post">	
+		<input type="text" name="userId">
+		<input type="password" name="password">
+		<input type="submit" value="로그인">
+	</form>
+	
+</body>
+</html>
