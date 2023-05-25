@@ -1,27 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"oracle_thin-1884b526610-753045ffa1668ae7": {
-			"provider": "oracle",
-			"driver": "oracle_thin",
-			"name": "student",
-			"save-password": true,
-			"configuration": {
-				"host": "localhost",
-				"port": "1521",
-				"database": "XE",
-				"url": "jdbc:oracle:thin:@localhost:1521:XE",
-				"configurationType": "MANUAL",
-				"home": "C:\\app\\GDJ\\product\\18.0.0\\dbhomeXE",
-				"type": "dev",
-				"provider-properties": {
-					"@dbeaver-connection-type@": "BASIC",
-					"@dbeaver-sid-service@": "SID"
-				},
-				"auth-model": "oracle_native"
-			}
-		},
-		"oracle_thin-188516f520a-37b5ce460b441b7e": {
+		"oracle_thin-188516ae5a7-6c6df4b236a05728": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
 			"name": "localhost",
