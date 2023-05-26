@@ -1,5 +1,4 @@
-package com.web.member.common;
-
+package com.web.common;
 
 import java.io.FileReader;
 import java.sql.Connection;
@@ -10,16 +9,17 @@ import java.sql.Statement;
 import java.util.Properties;
 
 public class JDBCTemplate {
-
 	public static Connection getConnection() {
 		Properties info=new Properties();
 		Connection conn=null;
 		try {
-			String path=JDBCTemplate.class.getResource("/driver.properties").getPath();
+			String path=JDBCTemplate.class
+					.getResource("/driver.properties").getPath();
 			info.load(new FileReader(path));
 			Class.forName(info.getProperty("driver"));
-			conn=DriverManager.getConnection(info.getProperty("url"),
-					info.getProperty("id"),
+			conn=DriverManager.getConnection(
+					info.getProperty("url"),
+					info.getProperty("user"),
 					info.getProperty("pw"));
 			conn.setAutoCommit(false);
 		}catch(Exception e) {
@@ -28,6 +28,9 @@ public class JDBCTemplate {
 		return conn;
 	}
 	
+//	public static void close(Object obj) {
+//		if(obj instanceof Connection c)
+//	}
 	public static void close(Connection conn) {
 		try {
 			if(conn!=null&&!conn.isClosed()) conn.close();
@@ -35,18 +38,16 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void close(Statement stmt) {
+	public static void close(Statement conn) {
 		try {
-			if(stmt!=null&&!stmt.isClosed()) stmt.close();
+			if(conn!=null&&!conn.isClosed()) conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public static void close(ResultSet rs) {
+	public static void close(ResultSet conn) {
 		try {
-			if(rs!=null&&!rs.isClosed()) rs.close();
+			if(conn!=null&&!conn.isClosed()) conn.close();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +60,6 @@ public class JDBCTemplate {
 			e.printStackTrace();
 		}
 	}
-	
 	public static void rollback(Connection conn) {
 		try {
 			if(conn!=null&&!conn.isClosed()) conn.rollback();
@@ -68,3 +68,13 @@ public class JDBCTemplate {
 		}
 	}
 }
+
+
+
+
+
+
+
+
+
+
