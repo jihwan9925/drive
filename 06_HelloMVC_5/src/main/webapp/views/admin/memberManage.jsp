@@ -5,6 +5,11 @@
 <%
 
 	List<MemberDTO> members=(List)request.getAttribute("members");
+	String type=request.getParameter("searchType");
+	String keyword=request.getParameter("searchKeyword");
+	String numPerpage=request.getParameter("numPerpage");
+	
+	
 
 %>
     
@@ -16,7 +21,7 @@
     
     section#memberList-container table#tbl-member {width:100%; border:1px solid gray; border-collapse:collapse;}
     section#memberList-container table#tbl-member th, table#tbl-member td {border:1px solid gray; padding:10px; }
-    #pageBar a{
+    #pageBar a,#pageBar span{
     	text-decoration: none;
     	font-size: 24px;
     	margin-left:2%;
@@ -46,45 +51,49 @@
         
             <div id="search-container">
         	검색타입 : 
-        	<select id="searchType" onchange="fn_changeSort();">
-        		<option value="userId" >아이디</option>
-        		<option value="userName" >회원이름</option>
-        		<option value="gender" >성별</option>
+        	<select id="searchType">
+        		<option value="userId" <%=type!=null&&type.equals("userId")?"selected":"" %>>아이디</option>
+        		<option value="userName" <%=type!=null&&type.equals("userName")?"selected":"" %>>회원이름</option>
+        		<option value="gender" <%=type!=null&&type.equals("gender")?"selected":"" %>>성별</option>
         	</select>
         	<div id="search-userId">
-        		<form action="<%=request.getContextPath()%>/admin/searchMember">
+        		<form action="<%=request.getContextPath()%>/admin/searchMember.do">
         			<input type="hidden" name="searchType" value="userId" >
         			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 아이디를 입력하세요" >
-        			<button type="submit">검색</button>
+        			placeholder="검색할 아이디를 입력하세요" value="<%=type!=null&&type.equals("userId")?keyword:""%>">
+        			<button type="submit" onsubmit="fn_submit();">검색</button>
         		</form>
         	</div>
         	<div id="search-userName">
-        		<form action="<%=request.getContextPath()%>/admin/searchMember">
+        		<form action="<%=request.getContextPath()%>/admin/searchMember.do">
         			<input type="hidden" name="searchType" value="userName">
         			<input type="text" name="searchKeyword" size="25" 
-        			placeholder="검색할 이름을 입력하세요">
-        			<button type="submit">검색</button>
+        			placeholder="검색할 이름을 입력하세요" value="<%=type!=null&&type.equals("userName")?keyword:""%>" >
+        			<button type="submit" onsubmit="fn_submit();">검색</button>
         		</form>
         	</div>
         	<div id="search-gender">
-        		<form action="<%=request.getContextPath()%>/admin/searchMember">
+        		<form action="<%=request.getContextPath()%>/admin/searchMember.do">
         			<input type="hidden" name="searchType" value="gender">
-        			<label><input type="radio" name="searchKeyword" value="M" >남</label>
-        			<label><input type="radio" name="searchKeyword" value="F" >여</label>
-        			<button type="submit">검색</button>
+        			<label><input type="radio" name="searchKeyword" value="M" 
+        			<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("M")?"checked":"" %>>남</label>
+        			<label><input type="radio" name="searchKeyword" value="F" 
+        			<%=type!=null&&type.equals("gender")&&keyword!=null&&keyword.equals("F")?"checked":"" %>>여</label>
+        			<button type="submit" onsubmit="fn_submit();">검색</button>
         		</form>
         	</div>
         </div>
         <div id="numPerpage-container">
         	페이지당 회원수 : 
-        	<form id="numPerFrm" action="">
+        	<%-- <form id="numPerFrm" action="<%=request.getContextPath()%>/admin/searchMember.do"> --%>
         		<select name="numPerpage" id="numPerpage">
-        			<option value="10">10</option>
-        			<option value="5" >5</option>
-        			<option value="3" >3</option>
+        			<option value="10" <%=numPerpage!=null&&numPerpage.equals("10")?"selected":"" %>>10</option>
+        			<option value="5" <%=numPerpage!=null&&numPerpage.equals("5")?"selected":"" %>>5</option>
+        			<option value="3" <%=numPerpage!=null&&numPerpage.equals("3")?"selected":"" %>>3</option>
+        			
         		</select>
-        	</form>
+        		
+        	<!-- </form> -->
         </div>
         
         <table id="tbl-member">
@@ -134,6 +143,32 @@
     	$(e.target).parent().find("div").css("display","none"); //해당객체의 부모객체의 모든 자손객체를 찾아 .css("display","none")대입
     	$("#search-"+type).css("display","inline-block"); //체크된 부분만 가시화
     })
+    
+    /* const fn_submit=()={
+    		$("#numPerFrm").value()
+    } */
+    
+    $(()=>{
+    	//ready함수(동작시 한번 실행됨) 에서 위 js코드를 실행시킨다는 의미(다시 공부하기)
+    	$("#searchType").change();
+    	$("#numPerpage").change(e=>{
+    		let url=location.href;
+    		//물음표가 있을때 : 검색을 진행한 후에
+    		if(url.includes("?")){
+    		url=url.substring(0,url.indexOf("?")+1)
+    		+'searchType=<%=type%>'
+    		+'&searchKeyword=<%=keyword%>'
+    		+'&cPage=<%=request.getParameter("cPage")!=null?request.getParameter("cPage"):1%>'
+    		+'&numPerpage='+e.target.value;
+    		}else{
+    			url+='?';
+    			url+='&cPage=<%=request.getParameter("cPage")!=null?request.getParameter("cPage"):1%>'
+        				+'&numPerpage='+e.target.value;
+    		}
+    		location.assign(url);    			
+    	});
+    })
+    
 	</script>
     
 <%@ include file="/views/common/footer.jsp" %>

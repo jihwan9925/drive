@@ -45,18 +45,22 @@ public class MemberListServlet extends HttpServlet {
 			cPage=1;
 		}
 		//한페이지당 데이터를 출력할 갯수
-		int numPerPage=10;
+		int numPerpage;
+		try {
+			numPerpage=Integer.parseInt(request.getParameter("numPerpage"));
+		}catch(NumberFormatException e) {
+			numPerpage=10;
+		}
 		
 //		String userId=request.getParameter("userId");
 		//1. DB에서 member테이블에 있는 데이터 가져오기
-		List<MemberDTO> members=new AdminService().viewMember(cPage,numPerPage);
-		
+		List<MemberDTO> members=new AdminService().viewMember(cPage,numPerpage);
 		
 		//2. 페이지바를 구현
 		//   *DB에 저장된 전체 데이터 수 가져오기(sql에서 COUNT 사용)
 		int totalData=new AdminService().selectMemberCount();
 		//   *전체 페이지수 계산하기 (소수점 주의,소수점이 나온다=[1.2. . . ]처럼 한페이지를 채우지 못하는 경우를 고려)
-		int totalPage=(int)Math.ceil((double)totalData/numPerPage);
+		int totalPage=(int)Math.ceil((double)totalData/numPerpage);
 		int pageBarSize=5; //[1.2.3.4.5]처럼 여러페이지를 얼마나 한번에 보여주는지를 뜻하는 숫자
 		//   *페이지바 시작번호(1,6,11...) 계산하기
 		int pageNo=((cPage-1)/pageBarSize)*pageBarSize+1;

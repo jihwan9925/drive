@@ -1,10 +1,10 @@
 {
 	"folders": {},
 	"connections": {
-		"oracle_thin-188516e799e-442b2990054d1a5b": {
+		"oracle_thin-18872c2801c-10dae74501cd7489": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "localhost",
+			"name": "localhost 3",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
@@ -12,7 +12,7 @@
 				"database": "XE",
 				"url": "jdbc:oracle:thin:@localhost:1521:XE",
 				"configurationType": "MANUAL",
-				"home": "C:\\app\\GDC10\\product\\18.0.0\\dbhomeXE",
+				"home": "C:\\app\\YOON\\product\\18.0.0\\dbhomeXE",
 				"type": "dev",
 				"provider-properties": {
 					"@dbeaver-connection-type@": "BASIC",
@@ -21,10 +21,10 @@
 				"auth-model": "oracle_native"
 			}
 		},
-		"oracle_thin-1885c162350-536f02902246eb6b": {
+		"oracle_thin-18872cb74cb-515e13ced3624eed": {
 			"provider": "oracle",
 			"driver": "oracle_thin",
-			"name": "localhost 2",
+			"name": "web",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
