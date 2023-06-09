@@ -42,7 +42,7 @@
 			if(loginMember==null){
 			%> 
 				<form id="loginFrm" action="<%=request.getContextPath()%>/loginfrm.do" method="post"
-				 onsubmit="return fn_validation();">  <!-- 이따 고치기 -->
+				 onsubmit="return fn_validation();">
 					<table>
 						<tr>
 							<td>
@@ -94,7 +94,7 @@
 				<ul class="main-nav">
 					<li class="home"><a href="">home</a></li>
 					<li id="notice"><a href="<%=request.getContextPath()%>/notice/memberList.do">공지사항</a></li>
-					<li id="board"><a href="">게시판</a></li>
+					<li id="board"><a href="<%=request.getContextPath()%>/board/boardList.do">게시판</a></li>
 					<%if(loginMember!=null&&loginMember.getUserId().equals("admin")) {%>
 						<li id="mamberManage"><a href="<%=request.getContextPath()%>/admin/memberList.do">회원관리</a></li>
 					<%} %>

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.web.model.service.NoticeService;
 import com.web.notice.model.dto.Notice;
+import com.web.notice.model.service.NoticeService;
 
 /**
  * Servlet implementation class NoticeViewServlet

@@ -12,8 +12,8 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.web.model.service.NoticeService;
 import com.web.notice.model.dto.Notice;
+import com.web.notice.model.service.NoticeService;
 
 /**
  * Servlet implementation class NoticeInsertEndServlet
