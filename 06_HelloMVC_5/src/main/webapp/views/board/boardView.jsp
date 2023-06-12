@@ -26,9 +26,11 @@
     table#tbl-comment tr td:first-of-type{padding: 5px 5px 5px 50px;}
     table#tbl-comment tr td:last-of-type {text-align:right; width: 100px;}
     table#tbl-comment button.btn-reply{display:none;}
+    table#tbl-comment button.btn-update{display:none;}
     table#tbl-comment button.btn-delete{display:none;}
     table#tbl-comment tr:hover {background:lightgray;}
     table#tbl-comment tr:hover button.btn-reply{display:inline;}
+    table#tbl-comment tr:hover button.btn-update{display:inline;}
     table#tbl-comment tr:hover button.btn-delete{display:inline;}
     table#tbl-comment tr.level2 {color:gray; font-size: 14px;}
     table#tbl-comment sub.comment-writer {color:navy; font-size:14px}
@@ -104,22 +106,38 @@
 		</div>
 		<table id="tbl-comment">
 		<%if(comments!=null) {
-		for(BoardComment bc: comments){%>
-			<tr class="level1">
-				<td>
-					<sub><%=bc.getBoardCommentWriter() %></sub>
-					<sub><%=bc.getBoardCommentDate() %></sub>
-					<br>
-					<%=bc.getBoardCommentContent() %>
-				</td>
-				<td>
-					<button class="btn-reply">답글</button>
-					<button class="btn-reply">수정</button>
-					<button class="btn-reply">삭제</button>
-				</td>
-			</tr>
+		for(BoardComment bc: comments){
+			if(bc.getLevel()==1){%>
+				<tr class="level1">
+					<td>
+					
+						<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
+						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
+						<br>
+						<%=bc.getBoardCommentContent() %>
+					</td>
+					<td>
+					<%if(loginMember!=null){ %>
+						<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+						<button class="btn-update">수정</button>
+						<button class="btn-delete">삭제</button>
+					<%} %>
+					</td>
+				</tr>
+			<%}else{ %>
+				<tr class="level2">
+					<td>
+						<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
+						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
+						<br>
+						<%=bc.getBoardCommentContent() %>
+					</td>
+					<td>
+					</td>
+				</tr>
 			<%}
-			}%>
+			}
+		}%>
 		</table>
    
     </section>
@@ -131,7 +149,22 @@
 			$("#userId").focus();
 		}
 	});
-    
+
+	$(".btn-reply").click(e=>{
+		const boardCommentRef = $(e.target).val(); //boardcommentRef 가져오기
+		const tr = $("<tr>"); //js로 태그 생성하는 법 기억하기
+		const td = $("<td>").attr("colspan","2");
+		const form = $(".comment-editor>form").clone(); //태그를 복사하는 기능
+		form.find("textarea").attr("rows","1"); //.find() : 자식태그의 내용까지 조회가능한 함수
+		form.find("input[name=level]").val("2");
+		form.find("input[name=boardCommentRef]").val(boardCommentRef);
+		td.append(form);
+		tr.append(td);
+		td.css("display","none");
+		//$(e.target).parents("tr").after(tr.children("td").slideDown(800)); //태그이름이 tr인 부모객체 옆에 만들어둔 tr 대입
+		tr.insertAfter($(e.target).parents("tr").children("td").slideDown(800));
+		$(e.target).off("click") //.on()의 반대개념, 계속 실행되는 것과 반대로 실행을 끈다.
+	});
 	</script>
 
 <%@ include file="/views/common/footer.jsp"%>
