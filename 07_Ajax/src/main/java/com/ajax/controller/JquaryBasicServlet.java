@@ -28,14 +28,14 @@ public class JquaryBasicServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		//쿼리스트링값 가져오기
 		String name = request.getParameter("name");
 		int age = Integer.parseInt(request.getParameter("age"));
-		System.out.println(name+age);
-		
+//		System.out.println(name+age);
+		//js에 String으로 보내기 (1. response.getWriter() 2. print(보낼데이터))
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out=response.getWriter();
-		out.print(name);
+		out.print(name); //따로보낸게 아니라 out에 한번에 모아서 보내준다.
 		out.print(age);
 		out.print("사용자가 보낸 데이터");
 		//response.getWriter().append("Served at: ").append(request.getContextPath());

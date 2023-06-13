@@ -10,10 +10,11 @@
 			<tr>
 				<th>아이디</th>
 				<td>
-					<input type="text" placeholder="4글자이상" name="userId" id="userId_" >
+					<input type="text" placeholder=" 4글자이상" name="userId" id="userId_" >
 					<input type="button" onclick="fn_dublicateId();" value="중복확인">
 				</td>
 			</tr>
+			
 			<tr>
 				<th>패스워드</th>
 				<td>
@@ -151,6 +152,31 @@
         		alert("아이디는 4글자이상 입력하세요!");
         	}
         }
+        
+        //ajax로 바꾸기
+        $("#userId_").keyup(e=>{
+			if(e.target.value.length>=4){
+				$.get("<%=request.getContextPath()%>/ajax/idDuplicate.do?id="+$(e.target).val(),
+				data=>{
+						let msg="",css={};
+						if(data==='true'){
+							msg="사용가능한 아이디입니다.";
+							css={color:"green"};
+						}else{
+							msg="사용불가능한 아이디입니다.";
+							css={color:"red"};
+						}
+						const tr=$("<tr>");
+						const td=$("<td colspan='2'>").text(msg).css(css);
+						tr.append(td);
+						if($(e.target).parents("tr").next().find("input").length==0){
+							$(e.target).parents("tr").next().remove();							
+						}
+						$(e.target).parents("tr").after(tr);
+					}
+				)
+			}
+		})
     </script>
     
 <%@ include file="/views/common/footer.jsp" %>
