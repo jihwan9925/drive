@@ -1,0 +1,470 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    height: calc(100vh - 74px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* index */
+
+/* booking-complete */
+#booking-complete{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+#booking-image{
+    margin-right: 120px;
+}
+#booking-info{
+    height: 400px;
+    margin-top: 150px;
+    padding-top: 50px;
+}
+#booking-info>table{
+    text-align: left;
+}
+#booking-info tr{
+    height: 30px;
+}
+#booking-info th{
+    padding-right: 20px;
+}
+#booking-info>button{
+    width: 150px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 20px;
+}
+#booking-info>table button[class="btn btn-dark"]{
+    font-size: 0.75rem;
+    height: 30px;
+    margin-bottom: 7px;
+}
+/* /booking-complete */
+
+/* booking-status */
+#booking-status{
+    margin-bottom: 5%;
+}
+#booking-status>div:first-of-type{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    padding-left: 100px;
+}
+#booking-status>div:first-of-type>span{
+    margin: 20px;
+}
+/* /booking-status */
+
+
+
+
+
+/* swiper */
+section{
+    height: calc(100vh - 74px);
+}
+.swiper {
+    width: 100%;
+    height: calc(100vh - 74px);
+    /* height: 92.1vh; */
+    /* height: 88.7vh; */
+}
+.swiper-slide {
+    width: 100vw;
+    text-align:center;
+    display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+    align-items:center; /* 위아래 기준 중앙정렬 */
+    justify-content:center; /* 좌우 기준 중앙정렬 */
+}
+.swiper-slide>img {
+    width: 100vw;
+    height: 100%;
+}
+#footer{
+    background-color: rgb(211, 211, 211);
+    width: 100vw;
+    height: 80px !important;
+    display: none;
+    position: fixed;
+    top: 93%;
+    left: 0;
+    z-index: 950;
+}
+.swiper-button-prev{
+    color: black !important;
+    position: fixed;
+    top: 40%;
+    left: 96%;
+}
+.swiper-button-next {
+    color: black !important;
+    position: fixed;
+    top: 60%;
+    left: 96%;
+}
+.swiper-pagination {
+    position: fixed;
+    top: 50% !important;
+    left: 96.7% !important;
+}
+.swiper-pagination-bullet{
+    background-color: black;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    display: none;
+}
+#search-btn{
+    cursor: pointer;
+    width: 55px;
+    height: 55px;
+    position: fixed;
+    top: 93%;
+    left: 49%;
+    z-index: 999;
+}#booking-filter{
+    /* border: 1px solid black; */
+    width: 50%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-bottom: 50px;
+}
+#filter-header{
+    width: 100%;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+}
+#filter-search-button{
+    display: inline-block;
+    background-color: black;
+    width: 46px;
+    height: 46px;
+    padding: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#filter-search-button>img{
+    width: 34px;
+    height: 34px;
+    position: relative;
+    top: 10%
+}
+#filter-search{
+    display: inline-block;
+    width: 450px;
+    height: 46px;
+    margin-left: 0px;
+}
+#filter-button>div{
+    margin: 10px;
+}
+#filter-button label{
+    border: 1px solid rgb(36, 36, 36);
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    cursor: pointer;
+}
+/* /swiper */
+.filterbox{
+    display: none;
+}
+/* /index */
+
+
+
+
+/* login */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.938rem;
+  color: #23004d;
+}
+section{
+    height: calc(100vh - 74px);
+}
+
+h1 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.login {
+  height: calc(100vh - 74px) !important;
+  display: grid;
+  grid-template-columns: 100%;
+}
+.login__content {
+  display: grid;
+}
+.login__img {
+  justify-self: center;
+}
+.login__img img {
+  width: 310px;
+  margin-top: 1.5rem;
+}
+.login__forms {
+  position: relative;
+  height: 368px;
+}
+.login__register, .login__create {
+  bottom: 1rem;
+  width: 100%;
+  height: 75vh;
+  background-color: #f2f2f2;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
+  animation-duration: 0.4s;
+  animation-name: animateLogin;
+}
+.login__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.login__box {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #fff;
+  margin-top: 0.75rem;
+  border-radius: 0.5rem;
+}
+.login__icon {
+  font-size: 1.5rem;
+  color:  rgb(230, 126, 34);;
+}
+.login__input {
+  border: none;
+  outline: none;
+  font-size: 0.938rem;
+  font-weight: 700;
+  color: #23004d;
+  width: 100%;
+}
+.login__input::placeholder {
+  font-size: 0.938rem;
+  font-family: "Open Sans", sans-serif;
+  color: #a49eac;
+}
+.login__forgot {
+  display: block;
+  width: max-content;
+  margin-left: auto;
+  margin-top: 1rem;
+  font-size: 0.813rem;
+  font-weight: 600;
+  color: #a49eac;
+}
+.login__button {
+  display: block;
+  padding: 1rem;
+  margin: 1rem 0;
+  background-color: rgb(230, 126, 34);;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+}
+.login__button:hover {
+  background-color: rgb(255, 227, 203);;
+}
+.login__account, .login__signin, .login__signup {
+  font-weight: 600;
+  font-size: 0.813rem;
+}
+.login__account--account, .login__signin--account, .login__signup--account {
+  color: #23004d;
+}
+.login__account--signin, .login__account--signup, .login__signin--signin, .login__signin--signup, .login__signup--signin, .login__signup--signup {
+  color:  rgb(206, 30, 7);
+  cursor: pointer;
+}
+.login__social {
+  margin-top: 2rem;
+}
+.login__social--icon {
+  font-size: 1.5rem;
+  color: #23004d;
+  margin: 0 1rem;
+}
+
+.block {
+  display: block;
+}
+
+.none {
+  display: none;
+}
+/* footer{
+    display: none;
+} */
+#sns-login{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+#sns-login img{
+    cursor: pointer;
+}
+#signin-input{
+    display: flex;
+    flex-direction: column;
+}
+#signin-input>span{
+    margin: 0.5rem;
+}
+#pw-box{
+  display: flex;
+    flex-direction: row;
+}
+#pw-box>div:first-child{
+  margin-right: 1%;
+}
+#pw-box>div:last-child{
+  margin-left: 1%;
+}
+#check-pw{
+    display: flex;
+    flex-direction: row;
+    margin: 0px 7px;
+  }
+  #check-pw>button{
+    width: 100px;
+    height: 30px;
+    font-size: 0.75rem;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+#check-num{
+    display: flex;
+    flex-direction: row;
+}
+#check-num>button{
+    width: 100px;
+    height: 30px;
+    font-size: 0.75rem;
+}
+#text-alert{
+  color: red;
+  margin-top: 0.75rem;
+}
+#login-input-menu{
+  display: inline-block;
+
+}
+#login-sub-menu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin-top: 35%; */
+}
+#login-sub-menu>a{
+  margin-left: 0%;
+}
+#login-in{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+#position-box{
+  height: 30vh;
+}
+
+
+@keyframes animateLogin {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@media screen and (min-width: 576px) {
+  .login__forms {
+    width: 25vw;
+    /* max-width: 470px; */
+    min-height: 70vh;
+    /* max-height: calc(100vh - 74px); */
+    justify-self: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .login {
+    height: 100vh;
+    overflow: hidden;
+  }
+  .login__content {
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    align-items: center;
+  }
+  .login__img {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    border-radius: 1rem;
+  }
+  .login__img img {
+    width: 100%;
+    margin-top: 0;
+  }
+  .login__register, .login__create {
+    left: -11rem;
+  }
+  .login__register {
+    bottom: -2rem;
+  }
+  .login__create {
+    bottom: -5.5rem;
+  }
+}
+/* /login */

@@ -1,7 +1,7 @@
 package com.web.model.dto;
 
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
@@ -44,7 +44,7 @@ public class MemberDTO {
 	@Override
 	public String toString() {
 		return userId+"$"+userName+"$"+age+"$"+gender+"$"+email+"$"+phone+"$"+address+"$"+
-				Arrays.toString(hobby)+"$"+new SimpleDateFormat("yyyy-mm-dd").format(enrollDate);
+				Arrays.toString(hobby)+"$"+new SimpleDateFormat("yyyy-MM-dd").format(enrollDate);
 	}
 	
 }

@@ -20,27 +20,28 @@
 	<button id="gsonBtn">gsontest</button>
 	<button id="gsonparse">test</button>
 	<script>
-		$("#gsonparse").click(e=>{
-			fetch("<%=request.getContextPath()%>/GsonTest.do",
-					{method:"post",
-					body:{JSON.stringify({"userId":"bsyoo",
-						"password":"1234",
-						"age":19,
-						"userName":"유병승",
-						"gender":"M",
-						"email:"test@naver.com"})}
-					})
-					.then(response=>response.json())
-					.then(data=>{
-						console.log(data);
-					});
-		});
 		$("#gsonBtn").click(e=>{
-			$.get("<%=request.getContextPath()%>/GsonTest.do",
+			<%-- $.get("<%=request.getContextPath()%>/GsonTest.do",
 					data=>{
 	                    console.log(data);
 	                }
-			);
+			); --%>
+			$.post("<%=request.getContextPath()%>/GsonTest.do",
+					{data:JSON.stringify({
+						userId:"bsyoo",
+						password:"1234",
+						userName:"유병승",
+						gender:"M",
+						age:19,
+						email:"afe@adf.com",
+						phone:"123",
+						address:"경기도시흥시",
+						enrollDate:'20230614'
+					})}, //JSON.stringify() : 객체를 문자열로 반환
+					data=>{
+	                    //console.log(data);
+	                }
+			)
 		});
 		$("#jsonBtn").click(e=>{
 			$.get("<%=request.getContextPath()%>/basicJson.do",

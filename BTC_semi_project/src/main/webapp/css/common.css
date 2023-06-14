@@ -1,0 +1,29 @@
+
+
+
+
+
+
+
+
+
+.nav-pills { /*커뮤니티 탭*/
+    margin-top: 80px;
+}
+
+
+h3 { /*커뮤니티 텍스트*/
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+
+.float-end {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#notice-pasing {
+    margin-top: 30px;
+}
+
+/* .contents-area {margin-top: 200px;} */
