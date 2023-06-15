@@ -1,6 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" /> --%>
+
+<%
+	String id=(String)session.getAttribute("userId");
+%>
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="../index.html"><img src="../images/casa64.png" width="120px"></a>
+        <a class="navbar-brand" href="<%=request.getContextPath()%>/index.jsp"><img src="<%=request.getContextPath()%>/images/casa64.png" width="120px"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -51,13 +58,24 @@
                     </ul>
                 </li>
 
-                <!-- <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">mypage</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" href="../LOGIN/login.html">login</a>
-                </li>
             </ul>
+        </div>
+        <div id="login-selector">
+            <ul class=navbar-nav>
+            <%if(id!=null) {%>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">mypage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="location.replace('<%=request.getContextPath() %>/logout.do')">logout</a>
+                </li>            
+            <%}else{%>
+	        	<li class="nav-item">
+	            	<a class="nav-link" href="<%=request.getContextPath()%>/views/LOGIN/login.jsp">login</a>
+	            </li>            
+            <%} %>
+                
+	        </ul>
         </div>
     </div>
 </nav>

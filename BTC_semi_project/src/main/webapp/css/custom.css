@@ -44,6 +44,14 @@
   }
 }
 
+/* header */
+
+div#login-selector{
+	margin-right: 1rem;
+}
+
+/* /header */
+
 body {
   margin: 0;
   font-family: var(--bs-font-sans-serif);
@@ -9736,5 +9744,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+
 
 /*# sourceMappingURL=custom.css.map */

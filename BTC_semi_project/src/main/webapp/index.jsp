@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8"> -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <meta name="format-detection" content="telephone=yes">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
@@ -19,9 +21,10 @@
 </head>
 
 <body>
+	<!-- <script> alert("id2 : "); </script> -->
     <!-- 헤더 영역 시작 -->
     <header id="header">
-        <script>$('#header').load('<%=request.getContextPath()%>/common/header-notlogin.html')</script>
+        <script>$('#header').load('<%=request.getContextPath()%>/views/common/header.jsp')</script>
     </header>
     <!-- 헤더 영역 종료 -->
     
@@ -31,44 +34,44 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/객실사진/1번 객실/02.jpg"></div>
+                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/02.jpg"></div>
                 <div class="swiper-slide">
                     <div id="booking-complete">
                         <div id="booking-image">
                             <h3>닉네임님의 예약현황</h3>
                             <br><br>
-                            <img src="<%=request.getContextPath()%>/images/객실사진/10번 객실/01.jpg" width="600" height="400">
+                            <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/03.jpg" width="600" height="400">
                         </div>
                         <div id="booking-info">
                             <table>
                                 <tbody>
                                     <tr class="resize">
                                         <th>예약자&nbsp;</th>
-                                        <td>김나나</td>
+                                        <td>김나나<br>성인 2명/유아 0명</td>
                                     </tr>
-                                    <tr class="resize">
+                                    <!-- <tr class="resize">
                                         <th>&nbsp;</th>
                                         <td>성인 2명/유아 0명</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="resize">
                                         <th>예약날자&nbsp;</th>
-                                        <td>2023.08.22 ~ 2023.08.25</td>
+                                        <td>2023.08.22 ~ 2023.08.25<br>성인 2명/유아 0명</td>
                                     </tr>
-                                    <tr class="resize">
+                                    <!-- <tr class="resize">
                                         <th>&nbsp;</th>
                                         <td>성인 2명/유아 0명</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="resize">
                                         <th>추가옵션&nbsp;</th>
-                                        <td>조식</td>
+                                        <td>조식<br>바베큐</td>
                                     </tr>
-                                    <tr class="resize">
+                                    <!-- <tr class="resize">
                                         <th>&nbsp;</th>
                                         <td>바베큐</td>
-                                    </tr>
+                                    </tr> -->
                                     <tr class="resize">
                                         <th>예약상태&nbsp;</th>
-                                        <td>결제대기중 <button type="button" class="btn btn-dark">바로결제</button>   </td>
+                                        <td>결제대기중 <button type="button" class="btn btn-dark">바로결제</button></td><br>
                                     </tr>
                                 </tbody>
                             </table>
@@ -79,7 +82,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div id="booking-status">
-                        <img id="status-image" src="<%=request.getContextPath()%>/images/house.png" alt="">
+                        <img id="status-image" src="<%=request.getContextPath()%>/images/icon/house.png" alt="house-icon" width="350px">
                         <h3>최고의 휴가를 보낼 수 있도록 도와드릴게요!</h3>
                         <div>
                             <span>
@@ -87,7 +90,7 @@
                                 <button type="button" class="btn btn-dark">키워드로 객실찾기</button>
                             </span>
                             <span>
-                                <p>아직 잘 모르겠어요... 어떤 객실들이 있나요?</p>
+                                <p>아직 잘 모르겠어요... <br>어떤 객실들이 있나요?</p>
                                 <button type="button" class="btn btn-dark">ROOMS 객실 둘러보기</button>
                             </span>
                         </div>
@@ -97,9 +100,10 @@
                     <div id="booking-filter">
                         <div>
                             <h3>취향저격! 키워드로 객실 찾기</h3>
+                            <input class="filter-search-value" type="hidden" placeholder=" 키워드 선택하기" readonly>
                             <div id="filter-header">
-                                <span id="filter-search-button"><img src="<%=request.getContextPath()%>/images/search-3-24.png" alt=""></span>
-                                <input id="filter-search" type="text" placeholder=" 키워드 선택하기">
+                                <span id="filter-search-button"><img src="<%=request.getContextPath()%>/images/icon/search-3-24.png" alt=""></span>
+                                <input class="filter-search" type="text" placeholder=" 키워드 선택하기" readonly>
                             </div>
                         </div>
                         <div id="filter-button">
@@ -137,17 +141,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/객실사진/1번 객실/04.jpg"></div>
+                <div class="swiper-slide"><img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/04.jpg"></div>
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
             
             <!-- If we need navigation buttons -->
-            <div class="swiper-button-prev"><img src="<%=request.getContextPath()%>/images/scroll_top_btn.png" alt=""></div>
-            <div class="swiper-button-next"><img src="<%=request.getContextPath()%>/images/scroll_bottom_btn.png" alt=""></div>
+            <div class="swiper-button-prev"><img src="<%=request.getContextPath()%>/images/icon/scroll_top_btn.png" alt=""></div>
+            <div class="swiper-button-next"><img src="<%=request.getContextPath()%>/images/icon/scroll_bottom_btn.png" alt=""></div>
         </div>
         <div id="search-btn" onclick="test();">
-            <img src="<%=request.getContextPath()%>/images/search.png" alt=""  width="50" height="50">
+            <img src="<%=request.getContextPath()%>/images/icon/search.png" alt=""  width="45" height="45">
             <ladel for="test07"></ladel>
         </div>
         <!-- Slider main container -->
@@ -155,11 +159,10 @@
     
     <!-- 푸터 영역 -->
     <footer id="footer">
-        <script>$('#footer').load('<%=request.getContextPath()%>/common/footer.html')</script>
+        <script>$('#footer').load('<%=request.getContextPath()%>/views/common/footer.jsp')</script>
     </footer>
 
     <!-- js파일 -->
-    <!-- 1.swiper -->
     <script src="<%=request.getContextPath()%>/js/test.js"></script>
 </body>
 </html>
