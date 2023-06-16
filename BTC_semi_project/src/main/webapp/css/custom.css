@@ -49,6 +49,9 @@
 div#login-selector{
 	margin-right: 1rem;
 }
+.logout{
+	cursor: pointer;
+}
 
 /* /header */
 

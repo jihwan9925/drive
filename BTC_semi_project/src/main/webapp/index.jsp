@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/swiper-bundle.min.css"/>
     <script src="<%=request.getContextPath()%>/js/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/test.css"/>
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>

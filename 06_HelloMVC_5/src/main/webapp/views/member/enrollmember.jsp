@@ -138,6 +138,7 @@
         	const td=$(e.target).parents("tr").next().find("td");
         	td.html(""); /* 없으면 값이 계속 늘어난다. */
         	$("<p>").css("color",color).text(msg).appendTo(td);
+        	
         });
         
         const fn_dublicateId=()=>{

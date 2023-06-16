@@ -24,6 +24,20 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
+<style>
+    form[class="login__create"]{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: space-between;
+    }
+    .login__msg{
+        font-weight: bolder;
+        font-size: 2.5rem;
+    }
+
+</style>
+
 <body>
     <!-- 헤더 영역 시작 -->
     <header id="header">
@@ -38,56 +52,25 @@
             <div class="login__content">
                 <div class="login__img">
                     <!-- <img src="../images/객실사진/10번 객실/05.jpg" alt="user login"> -->
-                    <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/05.jpg"  alt="user login">
+                    <img src="<%=request.getContextPath()%>/images/rooms image/no.1 rooms/09.jpg"  alt="user login">
                 </div>
                 <div class="login__forms">
-                    <form action="" class="login__register login-in">
-                        <h1 class="login__title">가입정보 조회</h1>
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="email" placeholder="Email" class="login__input" id="email-search">
-                        </div>
-                        <div class="text-alert">
-                            <br><!-- <p>*가입된 이메일이 아닙니다.</p> -->
-                        </div>
-                        <div id="position-box"></div>
-                        <div id="login-sub-menu">
-                            <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__forgot">로그인 하러가기</a>
-                            <a href="<%=request.getContextPath()%>/views/LOGIN/pw-search.jsp" class="login__forgot">비밀번호 찾기</a>
-                        </div>
-                        <a href="#" class="login__button">이메일 조회</a>
-                        <div>
-                            <span class="login__account login__account--account">가입된 계정이 없으십니까?</span>
-                            <a href="<%=request.getContextPath()%>/views/LOGIN/signup01-agreement.jsp" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
-                        </div>
+                    <form action="" class="login__create">
+                        <h1 class="login__title">3. 가입완료</h1>
+                        <h1 class="login__msg">000님, 환영합니다.</h1>
+                        <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__button">로그인 하러가기</a>
                     </form>
                 </div>
             </div>
-        </div>        
+        </div>    
     </section>
 
-
-    <!-- 푸터 영역 -->
+     <!-- 푸터 영역 -->
     <footer id="footer">
         <script>$('#footer').load('<%=request.getContextPath()%>/views/common/footer.jsp')</script>
     </footer>
-    
+
     <!-- js파일 -->
-    <script>
-        $('a[class="login__button"]').click((e)=>{
-            // const p = $("<p>");
-            let msg,color;
-            if($("#email-search").val()==''){
-                msg='*가입된 이메일이 아닙니다.';
-                color='red';
-            }else{
-                msg='*이미 가입된 계정입니다.';
-                color='green';
-            }
-            $(".text-alert").html("");
-            $(".text-alert").append($("<p>").addClass('fs-6').text(msg).css("color",color));
-        });
-    </script>
     <script src="<%=request.getContextPath()%>/js/test.js"></script>
 </body>
 </html>

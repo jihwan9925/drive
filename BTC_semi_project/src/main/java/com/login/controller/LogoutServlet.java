@@ -34,7 +34,8 @@ public class LogoutServlet extends HttpServlet {
 		System.out.println("(*LogoutServlet_doGet()실행");
 		HttpSession session = request.getSession();
 		String id=(String)session.getAttribute("userId");
-		session.invalidate();
+//		session.invalidate();
+		session.setAttribute("userId", null);
 		System.out.println("id1 : "+id);
 //		if(id!=null||!id.equals("")){
 //			//jsp덕분에 의미없는 유효성 검사이기는 함

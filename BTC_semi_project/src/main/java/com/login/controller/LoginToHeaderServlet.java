@@ -42,16 +42,16 @@ public class LoginToHeaderServlet extends HttpServlet {
 		String id=(String)session.getAttribute("userId");
 		
 		System.out.println("flag1 : "+id);
-		//값이 있으면 메인으로이동
-		if(id!=null) {
-			//메인에 보내기
-			System.out.println("flag2 : "+id);
-			response.sendRedirect(request.getContextPath());			
-		}else {
+		//값이 없으면 로그인 금지
+		if(id==null||id=="") {
 			//실패 로그 출력
 			System.out.println("flag3 : "+id);
 			System.out.println("올바른 아이디값을 넣어주세요.");
 			request.getRequestDispatcher("/views/LOGIN/login.jsp").forward(request, response);
+		}else{
+			//메인에 보내기
+			System.out.println("flag2 : "+id);
+			response.sendRedirect(request.getContextPath());			
 		}
 		
 	}

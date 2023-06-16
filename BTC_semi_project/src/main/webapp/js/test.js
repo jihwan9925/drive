@@ -36,10 +36,8 @@ const swiper = new Swiper('.swiper', {
     };
     
     //search-tag-button
-
     let filterDB="";
     let filterDBview="";
-    console.log("db : "+filterDB);
     $(document).ready(function(){
         $('.filterbox').change(function(){
             if($(this).is(":checked")) {
@@ -57,27 +55,3 @@ const swiper = new Swiper('.swiper', {
         });
     });
 
-
-
-
-    //login
-    const signup = document.getElementById("sign-up");
-    signin = document.getElementById("sign-in");
-    loginin = document.getElementById("login-in");
-    loginup = document.getElementById("login-up");
-
-    signup.addEventListener("click", () => {
-        loginin.classList.remove("block");
-        loginup.classList.remove("none");
-
-        loginin.classList.add("none");
-        loginup.classList.add("block");
-    })
-
-    signin.addEventListener("click", () => {
-        loginin.classList.remove("none");
-        loginup.classList.remove("block");
-
-        loginin.classList.add("block");
-        loginup.classList.add("none");
-    })

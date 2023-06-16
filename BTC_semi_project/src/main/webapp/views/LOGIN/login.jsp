@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/swiper-bundle.min.css"/>
     <script src="<%=request.getContextPath()%>/js/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/test.css"/>
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -41,18 +45,18 @@
                         <h1 class="login__title">Log in</h1>
                         <div class="login__box">
                             <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Email" class="login__input" name="id">
+                            <input type="email" placeholder="Email" class="login__input flag" name="id" id="id-null-check">
                         </div>
                         <div class="login__box">
                             <i class='bx bx-lock login__icon'></i>
-                            <input type="text" placeholder="Password" class="login__input">
+                            <input type="password" placeholder="Password" class="login__input">
                         </div>
                         <div id="position-box"></div>
                         <a href="<%=request.getContextPath()%>/views/LOGIN/email-search.jsp" class="login__forgot">가입정보조회 </a>
                         <input type="submit" class="login__button" id="login-submit-button" value="Log in">
                         <div>
                             <span class="login__account login__account--account">가입된 계정이 없으십니까?</span>
-                            <a href="<%=request.getContextPath()%>/views/LOGIN/sign-up.jsp" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
+                            <a href="<%=request.getContextPath()%>/views/LOGIN/signup01-agreement.jsp" class="login__signin login__signin--signup" id="sign-up">회원가입</a>
                         </div>
                         <div id="sns-login">
                             <span><img src="<%=request.getContextPath()%>/images/icon/kakao-talk-icon.png" alt="" width="50px"></span>
@@ -64,6 +68,22 @@
         </div>
     </section>
 
+    <script>
+        function isEmpty(){
+            let flag = $("#id-null-check").val();
+            if(typeof flag == "undefined" || flag == ""){
+                flag = null;
+                console.log(flag);
+            }
+        };
+        $("#login-submit-button").on("mousedown",(e)=>{
+            let flag = $("#id-null-check").val();
+            if(typeof flag == "undefined" || flag == ""){
+                flag = null;
+                console.log(flag);
+            };
+        });
+    </script>
      <!-- 푸터 영역 -->
     <footer id="footer">
         <script>$('#footer').load('<%=request.getContextPath()%>/views/common/footer.jsp')</script>

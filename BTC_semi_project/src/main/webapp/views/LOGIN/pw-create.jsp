@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/swiper-bundle.min.css"/>
     <script src="<%=request.getContextPath()%>/js/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/test.css"/>
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +53,7 @@
                 <input type="password" placeholder="PasswordCheck" class="login__input">
             </div>
             <div class="text-alert">
-                <p>*인증번호가 일치하지 않습니다.</p>
+                <!-- <p>*인증번호가 일치하지 않습니다.</p> -->
             </div>
             <div id="position-box"></div>
             <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__button" >비밀번호 변경</a>
@@ -62,6 +66,56 @@
     </footer>
 
     <!-- js파일 -->
+    <script>
+        // document.getElementsByClassName("login__input")[1].keydown(e=>{
+        //     const i = document.getElementsByClassName("login__input")[0].value;
+        //     const j = document.getElementsByClassName("login__input")[1].value;
+        //     if(i.length==j.length){
+        //         let msg,color;
+        //         if($("#email-search").val()==''){
+        //             msg='*가입된 이메일이 아닙니다.';
+        //             color='red';
+        //         }else{
+        //             msg='*이미 가입된 계정입니다.';
+        //             color='green';
+        //         }
+        //         $(".text-alert").html("");
+        //         $(".text-alert").append($("<p>").text(msg).css("color",color));
+        //     }
+        // })
+        const myevent = document.getElementsByClassName("login__input")[1];
+        
+        myevent.keyup = function() {
+            const i = document.getElementsByClassName("login__input")[0].value;
+            const j = document.getElementsByClassName("login__input")[1].value;
+            if(i.length==j.length){
+                let msg,color;
+                if($("#email-search").val()==''){
+                    msg='*비밀번호가 일치하지 않습니다.';
+                    color='red';
+                }else{
+                    msg='*비밀번호가 일치합니다..';
+                    color='green';
+                }
+                $(".text-alert").html("");
+                $(".text-alert").append($("<p>").text(msg).css("color",color));
+            }
+        }
+        
+        // $('a[class="login__button"]').click((e)=>{
+        //     // const p = $("<p>");
+        //     let msg,color;
+        //     if($("#email-search").val()==''){
+        //         msg='*가입된 이메일이 아닙니다.';
+        //         color='red';
+        //     }else{
+        //         msg='*이미 가입된 계정입니다.';
+        //         color='green';
+        //     }
+        //     $(".text-alert").html("");
+        //     $(".text-alert").append($("<p>").text(msg).css("color",color));
+        // });
+    </script>
     <script src="<%=request.getContextPath()%>/js/test.js"></script>
 </body>
 </html>

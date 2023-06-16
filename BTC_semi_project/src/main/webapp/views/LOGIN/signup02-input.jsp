@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/swiper-bundle.min.css"/>
     <script src="<%=request.getContextPath()%>/js/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/test.css"/>
+    <!-- 글꼴 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -38,7 +42,7 @@
             </div>
             <div class="login__forms">
                 <form action="" class="login__create" id="login-up">
-                    <h1 class="login__title">회원가입</h1>
+                    <h1 class="login__title">2. 정보입력</h1>
                     <div id="signin-input">
                         <div class="login__box">
                             <i class='bx bx-user login__icon'></i>
@@ -71,7 +75,7 @@
                         </div>
                     </div>
                     <div id="text-alert">
-                        <p>*비밀번호가 일치하지 않습니다.</p>
+                        <!-- <p>*비밀번호가 일치하지 않습니다.</p> -->
                     </div>
                     <div id="check-pw" class="login__box">
                         <i class='bx bx-check login__icon'></i>
@@ -79,7 +83,7 @@
                         <button type="button" class="btn btn-dark">중복확인</button>
                     </div>
                     <div style="height: 5%;"></div>
-                    <a href="<%=request.getContextPath()%>/views/LOGIN/sign-up.jsp" class="login__button">회원가입</a>
+                    <a href="<%=request.getContextPath()%>/views/LOGIN/signup03-success.jsp" class="login__button">회원가입</a>
                     
                     <!-- <div>
                         <span class="login__account login__account--account">?</span>
@@ -95,6 +99,21 @@
     </footer>
 
     <!-- js파일 -->
+    <script>
+        $('a[class="login__button"]').click((e)=>{
+            // const p = $("<p>");
+            let msg,color;
+            if($("#email-search").val()==''){
+                msg='*가입된 이메일이 아닙니다.';
+                color='red';
+            }else{
+                msg='*이미 가입된 계정입니다.';
+                color='green';
+            }
+            $(".text-alert").html("");
+            $(".text-alert").append($("<p>").text(msg).css("color",color));
+        });
+    </script>
     <script src="<%=request.getContextPath()%>/js/test.js"></script>
 </body>
 </html>
