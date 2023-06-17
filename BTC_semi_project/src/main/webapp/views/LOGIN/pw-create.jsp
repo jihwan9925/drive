@@ -50,7 +50,7 @@
             </div>
             <div id="check-num" class="login__box">
                 <i class='bx bx-lock login__icon'></i>
-                <input type="password" placeholder="PasswordCheck" class="login__input">
+                <input type="password" placeholder="PasswordCheck" class="login__input fn-password-check">
             </div>
             <div class="text-alert">
                 <!-- <p>*인증번호가 일치하지 않습니다.</p> -->
@@ -67,54 +67,21 @@
 
     <!-- js파일 -->
     <script>
-        // document.getElementsByClassName("login__input")[1].keydown(e=>{
-        //     const i = document.getElementsByClassName("login__input")[0].value;
-        //     const j = document.getElementsByClassName("login__input")[1].value;
-        //     if(i.length==j.length){
-        //         let msg,color;
-        //         if($("#email-search").val()==''){
-        //             msg='*가입된 이메일이 아닙니다.';
-        //             color='red';
-        //         }else{
-        //             msg='*이미 가입된 계정입니다.';
-        //             color='green';
-        //         }
-        //         $(".text-alert").html("");
-        //         $(".text-alert").append($("<p>").text(msg).css("color",color));
-        //     }
-        // })
-        const myevent = document.getElementsByClassName("login__input")[1];
-        
-        myevent.keyup = function() {
+
+        $(".fn-password-check").keyup(e=>{
             const i = document.getElementsByClassName("login__input")[0].value;
             const j = document.getElementsByClassName("login__input")[1].value;
-            if(i.length==j.length){
-                let msg,color;
-                if($("#email-search").val()==''){
-                    msg='*비밀번호가 일치하지 않습니다.';
-                    color='red';
-                }else{
-                    msg='*비밀번호가 일치합니다..';
-                    color='green';
-                }
-                $(".text-alert").html("");
-                $(".text-alert").append($("<p>").text(msg).css("color",color));
+            let msg,color;
+            if(i.length==j.length&&i==j){
+                msg='*비밀번호가 일치합니다.';
+                color='green';
+            }else{
+                msg='*비밀번호가 일치하지 않습니다.';
+                color='red';
             }
-        }
-        
-        // $('a[class="login__button"]').click((e)=>{
-        //     // const p = $("<p>");
-        //     let msg,color;
-        //     if($("#email-search").val()==''){
-        //         msg='*가입된 이메일이 아닙니다.';
-        //         color='red';
-        //     }else{
-        //         msg='*이미 가입된 계정입니다.';
-        //         color='green';
-        //     }
-        //     $(".text-alert").html("");
-        //     $(".text-alert").append($("<p>").text(msg).css("color",color));
-        // });
+            $(".text-alert").html("");
+            $(".text-alert").append($("<p>").text(msg).css("color",color));
+        });
     </script>
     <script src="<%=request.getContextPath()%>/js/test.js"></script>
 </body>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <meta name="format-detection" content="telephone=yes">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title>INDEX(NOT LOGIN)</title>
+    <title>CASA64</title>
     <script src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
     <!-- 헤더,푸터 -->
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" />

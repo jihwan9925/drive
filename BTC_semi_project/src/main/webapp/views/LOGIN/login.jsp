@@ -42,7 +42,7 @@
                 </div>
                 <div class="login__forms">
                     <form action="<%=request.getContextPath()%>/LoginToHeaderServlet.do" class="login__register login-in" id="frm-login">
-                        <h1 class="login__title">Log in</h1>
+                        <h1 class="login__title">Log In</h1>
                         <div class="login__box">
                             <i class='bx bx-user login__icon'></i>
                             <input type="email" placeholder="Email" class="login__input flag" name="id" id="id-null-check">

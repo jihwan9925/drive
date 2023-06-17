@@ -290,7 +290,7 @@ img {
   padding: 3rem 2rem;
   border-radius: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   text-align: center;
   box-shadow: 0 8px 20px rgba(35, 0, 77, 0.2);
@@ -423,11 +423,11 @@ img {
 /* /sign-up */
 
 /* pw-search */
-#check-num{
+#check-email{
     display: flex;
     flex-direction: row;
 }
-#check-num>button{
+#check-email>button{
     width: 6.25rem;
     height: 2rem;
     font-size: 0.75rem;

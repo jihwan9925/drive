@@ -50,7 +50,7 @@
                 <i class='bx bx-lock login__icon'></i>
                 <input type="text" placeholder="Email" class="login__input">
             </div>
-            <div id="check-num" class="login__box">
+            <div id="check-email" class="login__box check-num">
                 <i class='bx bx-check login__icon'></i>
                 <input type="text" placeholder="checkNum" class="login__input">
                 <button type="button" class="btn btn-dark">중복확인</button>
@@ -62,7 +62,7 @@
             <div id="login-sub-menu">
                 <a href="<%=request.getContextPath()%>/views/LOGIN/login.jsp" class="login__forgot">로그인 하러가기</a>
             </div>
-            <a href="<%=request.getContextPath()%>/views/LOGIN/pw-create.jsp" class="login__button">이메일 조회</a>
+            <a href="<%=request.getContextPath()%>/views/LOGIN/pw-create.jsp" class="login__button">Next</a>
             
             <div>
                 <span class="login__account login__account--account">가입된 계정이 없으십니까?</span>
@@ -78,14 +78,14 @@
 
     <!-- js파일 -->
     <script>
-        $('a[class="login__button"]').click((e)=>{
+        $('.check-num>button[class="btn btn-dark"]').click((e)=>{
             // const p = $("<p>");
             let msg,color;
-            if($("#email-search").val()==''){
-                msg='*가입된 이메일이 아닙니다.';
+            if($('.check-num>input[class="login__input"]').val()==''){
+                msg='*올바르지않은 입력값입니다.';
                 color='red';
             }else{
-                msg='*이미 가입된 계정입니다.';
+                msg='*인증완료 되었습니다.';
                 color='green';
             }
             $(".text-alert").html("");
