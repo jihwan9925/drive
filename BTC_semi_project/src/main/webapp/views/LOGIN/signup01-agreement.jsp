@@ -1,82 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <!-- <meta charset="UTF-8"> -->
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-    <meta name="format-detection" content="telephone=yes">
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <title>INDEX(NOT LOGIN)</title>
-    <script src="<%=request.getContextPath()%>/js/jquery-3.7.0.min.js"></script>
-    <!-- 헤더,푸터 -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/custom.css" />
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common.css" />
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap.bundle.min.js"></script>
-    <!-- swiper -->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/swiper-bundle.min.css"/>
-    <script src="<%=request.getContextPath()%>/js/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/test.css"/>
-    <!-- 글꼴 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
     <!-- 헤더 영역 시작 -->
-    <header id="header">
-        <script>$('#header').load('<%=request.getContextPath()%>/views/common/header.jsp')</script>
-    </header>
+    <%@ include file="/views/common/header.jsp" %>
     <!-- 헤더 영역 종료 -->
-
-    <style>
-        #login-up>.swiper{
-            width: 100%;
-            height: 90%;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            justify-content: space-between;
-        }
-        #login-up .swiper-slide {
-            width: 100vw;
-            text-align:center;
-            display:flex;
-            align-items:center;
-            justify-content:start !important;
-        }
-        .swiper-pagination {
-            position: fixed;
-            top: 60% !important;
-            left: 50% !important;
-            transform: translate(-50%,0%);
-        }
-        #login-up textarea{
-            width: 100%;
-            height: 15rem;
-            font-size: 1rem;
-        }
-        #login-up .swiper-slide{
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
-        #login-up .swiper-slide>h4{
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-        #login-up label{
-            font-size: 1rem;
-        }
-        #login-up .swiper-pagination{
-            height: 2.5rem;
-        }
-        #login-up .signup-nextbtn{
-            display: inline-block;
-        }
-    </style>
 
     <section>
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -134,99 +60,30 @@
                             <input type="checkbox" id="signup-agree04">
                             <label for="signup-agree04" class="login__signin login__signin--signup"> 전체 동의</label>
                         </div>
-                        <!-- If we need navigation buttons -->
-                        <!-- <div class="swiper-button-prev"><img src="<%=request.getContextPath()%>/images/icon/scroll_top_btn.png" alt=""></div>
-                        <div class="swiper-button-next"><img src="<%=request.getContextPath()%>/images/icon/scroll_bottom_btn.png" alt=""></div> -->
                     </div>
-                    <!-- Slider main container -->
-
-
-                    <!-- <h1 class="login__title">회원가입</h1>
-                    <div id="signin-input">
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="Username" class="login__input">
-                        </div>
-                        
-                        <div class="login__box">
-                            <i class='bx bx-at login__icon'></i>
-                            <input type="text" placeholder="Email" class="login__input">
-                        </div>
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="NickName" class="login__input">
-                        </div>
-                        <div class="login__box">
-                            <i class='bx bx-phone login__icon'></i>
-                            <input type="text" placeholder="phone" class="login__input">
-                        </div>
-                        
-                        <div id="pw-box">
-                            <div class="login__box">
-                                <i class='bx bx-lock login__icon'></i>
-                                <input type="text" placeholder="password" class="login__input">
-                            </div>
-
-                            <div class="login__box">
-                                <i class='bx bx-lock login__icon'></i>
-                                <input type="text" placeholder="passwordCK" class="login__input">
-                            </div>
-                        </div>
-                    </div>
-                    <div id="text-alert">
-                        <p>*비밀번호가 일치하지 않습니다.</p>
-                    </div>
-                    <div id="check-pw" class="login__box">
-                        <i class='bx bx-check login__icon'></i>
-                        <input type="text" placeholder="checkNum" class="login__input">
-                        <button type="button" class="btn btn-dark">중복확인</button>
-                    </div>
-                    <div style="height: 5%;"></div>
-                    <a href="<%=request.getContextPath()%>/views/LOGIN/sign-up.jsp" class="login__button">회원가입</a> -->
                 </form>
             </div>
     </section>
 
-     <!-- 푸터 영역 -->
-    <footer id="footer">
-        <script>$('#footer').load('<%=request.getContextPath()%>/views/common/footer.jsp')</script>
-    </footer>
-
     <!-- js파일 -->
+    <!-- 한파일에 두기엔 변수명이 중복되는데 부트스트랩은 이름을 변경하면 안되는걸로 알아서 일단 합치지 않음 -->
     <script>
         const swiper = new Swiper('.swiper', {
         // Optional parameters
         direction: 'horizontal',
         mousewheel: true,
         loop: false,
-        
         // If we need pagination
         pagination: {
             el: '.swiper-pagination',
             clickable : true,
         },
-        
         // Navigation arrows
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
         },
-        // 푸터 애니매이션
-        // on: {
-        //     slideChangeTransitionEnd: function(){
-        //         // console.log(this.activeIndex+1);
-        //         cview=this.activeIndex+1;
-        //         if(cview==5){
-        //             $("#footer").css("display","inline-block").animate({width: 1980}, 300);
-        //         }else{
-        //             $("#footer").animate({width: 0}, 300);
-        //             $("#footer").css("display","none");
-        //         };
-        //     },
-        // },
         });
     </script>
-    <script src="<%=request.getContextPath()%>/js/test.js"></script>
-
-</body>
-</html>
+     <!-- 푸터 영역 -->
+     <%@ include file="/views/common/footer.jsp" %>	
