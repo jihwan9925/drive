@@ -163,6 +163,23 @@ private Properties sql=new Properties();
 			close(pstmt);
 		}return list;
 	}
+	
+	public int BoardCommentDelete(Connection conn, int no) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("BoardCommentDelete"));
+			pstmt.setInt(1, no);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
+	
+	
+	
 	private BoardComment getBoardComment (ResultSet rs)throws SQLException{
 		return BoardComment.builder()
 				.boardCommentNo(rs.getInt("board_comment_no"))

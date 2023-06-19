@@ -4,6 +4,17 @@
     <%@ include file="/views/common/header.jsp" %>
     <!-- 헤더 영역 종료 -->
     
+    <!-- css -->
+    <style>
+        body{
+            height: calc(100vh - 4.625rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    </style>
+    <!-- /css -->
+    
     <section>
         <!-- Slider main container -->
         <div class="swiper">

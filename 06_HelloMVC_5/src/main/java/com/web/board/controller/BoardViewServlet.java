@@ -62,13 +62,14 @@ public class BoardViewServlet extends HttpServlet {
 			c.setMaxAge(60*60*24);
 			response.addCookie(c);			
 		}
-		
+		//게시판 상세내용
 		Board b=new BoardService().selectBoardByNo(no,isRead);
 		
 		//댓글을 가져와서 출력하기
 		List<BoardComment> comments=new BoardService().selectBoardComment(no);
-		
+		//게시판 상세내용
 		request.setAttribute("board", b);
+		//게시판 댓글
 		request.setAttribute("comment", comments);
 		request.getRequestDispatcher("/views/board/boardView.jsp").forward(request, response);
 	}

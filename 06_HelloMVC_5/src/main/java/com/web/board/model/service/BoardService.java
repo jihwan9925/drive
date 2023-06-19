@@ -40,6 +40,7 @@ public class BoardService {
 	}
 	public Board selectBoardByNo(int no,boolean isRead){
 		Connection conn=getConnection();
+		//번호로 게시물 상세내용 불러오기
 		Board b=dao.selectBoardByNo(conn, no);
 		if(b!=null&&!isRead) { //isRead가 false면 값이 없는 것이니 들어간 적이 없다는 의미이고, 그때는 증가 메소드 실행||isRead가 true면 방문한 적 있기 때문에 실행을 막음
 			int result=dao.updateBoardReadCount(conn,no);
@@ -75,5 +76,14 @@ public class BoardService {
 		List<BoardComment> list=dao.selectBoardComment(conn,boardNo);			
 		close(conn);
 		return list;
+	}
+	
+	public int BoardCommentDelete(int no) {
+		Connection conn=getConnection();
+		int result=dao.BoardCommentDelete(conn,no);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
 	}
 }

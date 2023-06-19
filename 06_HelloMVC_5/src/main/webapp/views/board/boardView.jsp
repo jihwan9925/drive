@@ -110,17 +110,16 @@
 			if(bc.getLevel()==1){%>
 				<tr class="level1">
 					<td>
-					
 						<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
 						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
 						<br>
-						<%=bc.getBoardCommentContent() %>
+						<span><%=bc.getBoardCommentContent() %></span>
 					</td>
 					<td>
 					<%if(loginMember!=null){ %>
 						<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
 						<button class="btn-update">수정</button>
-						<button class="btn-delete">삭제</button>
+						<button class="btn-delete"  onclick="location.assign('<%=request.getContextPath() %>/board/BoardCommentDelete.do?ref=<%=bc.getBoardRef()%>&no=<%=bc.getBoardCommentNo()%>')">삭제</button>
 					<%} %>
 					</td>
 				</tr>
@@ -130,9 +129,14 @@
 						<sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
 						<sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
 						<br>
-						<%=bc.getBoardCommentContent() %>
+						<span><%=bc.getBoardCommentContent() %></span>
 					</td>
 					<td>
+						<%if(loginMember!=null){ %>
+							<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+							<button class="btn-update">수정</button>
+							<button class="btn-delete" onclick="location.assign('<%=request.getContextPath() %>/board/BoardCommentDelete.do?ref=<%=bc.getBoardRef()%>&no=<%=bc.getBoardCommentNo()%>')">삭제</button>
+						<%} %>
 					</td>
 				</tr>
 			<%}
@@ -149,20 +153,34 @@
 			$("#userId").focus();
 		}
 	});
-
+	//수정을 누르면 input태그가 나와서 수정 가능하게(기존값을 value로 지정하도록)
+	$(".btn-update").click(e=>{
+		const form = $(".comment-editor>form").clone();
+		form.find("textarea").attr({"rows":"1","cols":"50"});
+		/* const textarea = $("<textarea>").attr({"rows":"1","cols":"50"}); */
+		const btn = $("<button>").html("수정");
+		const update = $(e.target).parents("tr").find("span");
+		const defaultText = update.text();
+		form.val(defaultText);
+		/* textarea.val(defaultText); */
+		update.html(textarea);
+		update.append(btn);
+	});	
+	
+	//form태그를 복사했기 때문에 등록버튼을 누르면 submit이 된다.
 	$(".btn-reply").click(e=>{
-		const boardCommentRef = $(e.target).val(); //boardcommentRef 가져오기
 		const tr = $("<tr>"); //js로 태그 생성하는 법 기억하기
 		const td = $("<td>").attr("colspan","2");
+		const boardCommentRef = $(e.target).val(); //boardcommentRef 가져오기
 		const form = $(".comment-editor>form").clone(); //태그를 복사하는 기능
 		form.find("textarea").attr("rows","1"); //.find() : 자식태그의 내용까지 조회가능한 함수
 		form.find("input[name=level]").val("2");
 		form.find("input[name=boardCommentRef]").val(boardCommentRef);
+		td.css("display","none");
 		td.append(form);
 		tr.append(td);
-		td.css("display","none");
 		//$(e.target).parents("tr").after(tr.children("td").slideDown(800)); //태그이름이 tr인 부모객체 옆에 만들어둔 tr 대입
-		tr.insertAfter($(e.target).parents("tr").children("td").slideDown(800));
+		tr.insertAfter($(e.target).parents("tr")).children("td").slideDown(800);
 		$(e.target).off("click") //.on()의 반대개념, 계속 실행되는 것과 반대로 실행을 끈다.
 	});
 	</script>
