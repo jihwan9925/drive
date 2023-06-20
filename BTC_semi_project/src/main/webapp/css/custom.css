@@ -212,7 +212,8 @@ sup {
 
 a {
   color: #000;
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  text-decoration: none;
 }
 a:hover {
   color: black;

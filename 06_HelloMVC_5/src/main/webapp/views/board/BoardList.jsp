@@ -6,6 +6,7 @@
 <%@ page import="java.util.List,com.web.board.model.vo.dto.Board" %>
 
 <%
+	//서블릿에 있음
 	List<Board> boards=(List)request.getAttribute("boards");
 %>
 

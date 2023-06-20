@@ -86,4 +86,13 @@ public class BoardService {
 		close(conn);
 		return result;
 	}
+	
+	public int BoardCommentUpdate(String content , int commentNo) {
+		Connection conn=getConnection();
+		int result=dao.BoardCommentUpdate(conn,content,commentNo);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
 }

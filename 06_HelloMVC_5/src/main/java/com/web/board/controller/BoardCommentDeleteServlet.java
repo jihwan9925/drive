@@ -33,13 +33,11 @@ public class BoardCommentDeleteServlet extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		//게시물 번호 받아오기
 		int ref = Integer.parseInt(request.getParameter("ref"));
-		System.out.println("flag : "+no);
 		//삭제메소드로 보냄
 		int result = new BoardService().BoardCommentDelete(no);
 		//확인되면 다시 돌아감(boardView)
 		String msg,loc;
 		if(result>0) {
-			System.out.println("pass");
 			msg = "정상적으로 삭제되었습니다.";
 			loc = "/board/boardView.do?no="+ref;
 		}else {

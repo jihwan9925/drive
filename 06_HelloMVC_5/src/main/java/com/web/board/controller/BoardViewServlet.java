@@ -33,7 +33,7 @@ public class BoardViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// 선택한 게시물의 번호
 		int no=Integer.parseInt(request.getParameter("no"));
 		//새로고침해도 조회수를 증가하지않게 만드는 로직
 		
@@ -64,7 +64,6 @@ public class BoardViewServlet extends HttpServlet {
 		}
 		//게시판 상세내용
 		Board b=new BoardService().selectBoardByNo(no,isRead);
-		
 		//댓글을 가져와서 출력하기
 		List<BoardComment> comments=new BoardService().selectBoardComment(no);
 		//게시판 상세내용

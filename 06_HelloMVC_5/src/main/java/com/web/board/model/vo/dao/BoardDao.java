@@ -178,7 +178,20 @@ private Properties sql=new Properties();
 		}return result;
 	}
 	
-	
+	public int BoardCommentUpdate(Connection conn, String content , int commentNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt=conn.prepareStatement(sql.getProperty("BoardCommentUpdate"));
+			pstmt.setString(1, content);
+			pstmt.setInt(2, commentNo);
+			result=pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}return result;
+	}
 	
 	private BoardComment getBoardComment (ResultSet rs)throws SQLException{
 		return BoardComment.builder()

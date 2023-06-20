@@ -5,9 +5,9 @@
 <%@ page import="java.util.List,com.web.board.model.vo.dto.Board,com.web.board.model.vo.dto.BoardComment" %>
 <%
 
-	Board b=(Board)request.getAttribute("board");
-	int ref=Integer.parseInt(request.getParameter("no"));
-	List<BoardComment> comments=(List)request.getAttribute("comment");
+	Board b=(Board)request.getAttribute("board"); //boardViewServlet
+	int ref=Integer.parseInt(request.getParameter("no")); //
+	List<BoardComment> comments=(List)request.getAttribute("comment"); //boardViewServlet
 
 %>
 
@@ -90,7 +90,7 @@
 		</table>
 		<div id="comment-container">
 			<div class="comment-editor">
-				<form action="<%=request.getContextPath()%>/board/insertComment.do" method="post">
+				<form action="<%=request.getContextPath()%>/board/insertComment.do" method="post" class="select-form">
 					<input type="hidden" name="boardRef" value="<%=b.getBoardNo()%>">
 					<input type="hidden" name="level" value="1">
 					<input type="hidden" name="boardCommentWriter" value="<%=loginMember!=null?loginMember.getUserId():""%>">
@@ -117,7 +117,7 @@
 					</td>
 					<td>
 					<%if(loginMember!=null){ %>
-						<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+						<button class="btn-reply" name="boardCommentNo" value="<%=bc.getBoardCommentNo()%>">답글</button>
 						<button class="btn-update">수정</button>
 						<button class="btn-delete"  onclick="location.assign('<%=request.getContextPath() %>/board/BoardCommentDelete.do?ref=<%=bc.getBoardRef()%>&no=<%=bc.getBoardCommentNo()%>')">삭제</button>
 					<%} %>
@@ -134,7 +134,7 @@
 					<td>
 						<%if(loginMember!=null){ %>
 							<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
-							<button class="btn-update">수정</button>
+							<button class="btn-update" >수정</button>
 							<button class="btn-delete" onclick="location.assign('<%=request.getContextPath() %>/board/BoardCommentDelete.do?ref=<%=bc.getBoardRef()%>&no=<%=bc.getBoardCommentNo()%>')">삭제</button>
 						<%} %>
 					</td>
@@ -155,16 +155,28 @@
 	});
 	//수정을 누르면 input태그가 나와서 수정 가능하게(기존값을 value로 지정하도록)
 	$(".btn-update").click(e=>{
+		//위에 로직 복사
 		const form = $(".comment-editor>form").clone();
+		//level 2
+		//필요한 것 : (변경할 값) , (수정할 commentNo{PK값}) , (게시판 번호{돌아오기위한 주소})
+		const boardCommentNo = $(e.target).prev().val();
+		//commentNo 요청
+		const input = $("<input>").attr({"type":"hidden","name":"boardCommnetNo"}).val(boardCommentNo);
+		form.append(input);
+		//해당주소로 돌아오기위한 no값 요청
+		const no = $("<input>").attr({"type":"hidden","name":"no"}).val(<%=ref%>);
+		form.append(no);
+		
 		form.find("textarea").attr({"rows":"1","cols":"50"});
-		/* const textarea = $("<textarea>").attr({"rows":"1","cols":"50"}); */
-		const btn = $("<button>").html("수정");
+		form.attr("action","<%=request.getContextPath()%>/board/updateComment.do");
 		const update = $(e.target).parents("tr").find("span");
+		//level 조회
+		console.log($(e.target).parents("tr").attr("class"));
+		//기존값 가져오기
 		const defaultText = update.text();
-		form.val(defaultText);
-		/* textarea.val(defaultText); */
-		update.html(textarea);
-		update.append(btn);
+		form.find("textarea").val(defaultText);
+		update.html(form);
+		$(e.target).off("click");
 	});	
 	
 	//form태그를 복사했기 때문에 등록버튼을 누르면 submit이 된다.
@@ -179,9 +191,8 @@
 		td.css("display","none");
 		td.append(form);
 		tr.append(td);
-		//$(e.target).parents("tr").after(tr.children("td").slideDown(800)); //태그이름이 tr인 부모객체 옆에 만들어둔 tr 대입
 		tr.insertAfter($(e.target).parents("tr")).children("td").slideDown(800);
-		$(e.target).off("click") //.on()의 반대개념, 계속 실행되는 것과 반대로 실행을 끈다.
+		$(e.target).off("click"); //.on()의 반대개념, 계속 실행되는 것과 반대로 실행을 끈다.
 	});
 	</script>
 
